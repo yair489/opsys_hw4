@@ -60,7 +60,7 @@ void *reactorThreadFunction(void *reactorPtr)
                 else if (reactor->fds[i].revents & POLLHUP || reactor->fds[i].revents & POLLNVAL || reactor->fds[i].revents & POLLERR)
                 {
                     removeKey(reactor->fdMap, reactor->fds[i].fd);
-                    for (int j = i; j < reactor->count - 1; j++)
+                    for (int j = i; j < reactor->count; j++)
                     {
                         reactor->fds[j].fd = reactor->fds[j + 1].fd;
                         reactor->fds[j].events = reactor->fds[j + 1].events;
